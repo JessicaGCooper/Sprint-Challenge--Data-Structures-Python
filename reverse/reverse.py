@@ -53,12 +53,12 @@ class LinkedList:
         if node.next_node == None:
             return node
         else:
-            nxt = node.next_node
+            # nxt = node.next_node
             node.next_node = prev
             prev = node
-            node = nxt 
+            # node = nxt 
 
-            self.reverse_list(node.next_node, node.next_node.next_node)
+            self.reverse_list(node, node.next_node)
 
 
             
