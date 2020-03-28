@@ -8,8 +8,12 @@ class RingBuffer:
         self.storage = DoublyLinkedList()
 
     #once capacity is reached the oldest item in the ringbuffer is replaced with the newest item (overwritten)
-    #a Queue seems the most logical as dequeue removes the last element, the 
-    # the new value can be enqueued, the head dequeued, and then the new value (which will be the tail -> can be moved ot the front using the dll move_to_front method)
+    #this means when the linked list reachs capacity
+    # the first new item will replace the head
+    # the second new item will replace the head.next
+    # the 3rd new item will replace head.next.next
+
+   
 
     def append(self, item):
         print(len(self.storage))
@@ -23,6 +27,7 @@ class RingBuffer:
             self.storage.remove_from_head()
             self.storage.add_to_head(item)
             self.current = self.storage.head.next
+            self.current.next = self.current
             # else:
             #     new_node.prev = self.current
             #     self.current.next = new_node
